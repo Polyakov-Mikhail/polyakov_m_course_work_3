@@ -31,5 +31,18 @@ def date_formatting_operation():
     return last_operation
 
 
-def hide_and_split():
-    pass
+def hide_and_split(card):
+    """
+    номер карты отображается в формате  XXXX XX** **** XXXX
+    номер счета отображается в формате  **XXXX (видны только последние 4 цифры номера счета)
+    """
+    card_number = card.split()[-1]
+    name_card = card.split()[:-1]
+    if len(card_number) == 16:
+        private_number = card_number[:4] + " " + card_number[4:6] + "** " + "**** " + card_number[-4:]
+        correct_number = f'{" ".join(name_card)} ' + private_number
+    else:
+        correct_number = f'{card[:-len(card_number)]}{("**" + (card_number[-4:]))}'
+    return correct_number
+
+
