@@ -23,12 +23,10 @@ def data_json():
     return last_operation
 
 
-def date_formatting_operation():
+def date_formatting_operation(data):
     """Перевод даты в формат ДД.ММ.ГГГГ"""
-    last_operation = data_json()
-    for data_corrected in last_operation:
-        data_corrected["date"] = datetime.datetime.fromisoformat(data_corrected['date']).strftime('%d.%m.%Y')
-    return last_operation
+    data_corrected = datetime.datetime.fromisoformat(data).strftime('%d.%m.%Y')
+    return data_corrected
 
 
 def hide_and_split(card):
