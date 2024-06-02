@@ -1,4 +1,4 @@
-from src.functions import data_json, executed_state_data, last_five_operation
+from src.functions import data_json
 
 
 def test_data_json():
