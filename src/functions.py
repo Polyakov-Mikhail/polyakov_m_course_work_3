@@ -1,7 +1,8 @@
 import json
+import datetime
 
 
-def data_json(quantity_last_operations):
+def data_json():
     """Функция получает последние N операций из файла json"""
 
     executed_states = []
@@ -17,15 +18,18 @@ def data_json(quantity_last_operations):
                 executed_states.append(executed)
 
     sorted_operations = sorted(executed_states, key=lambda x: x.get('date', '0'))
-    last_operation = sorted_operations[-quantity_last_operations:]
+    last_operation = sorted_operations[-5:]
 
     return last_operation
 
 
-a = data_json(2)
-for b in a:
-    print(b)
-
-
 def date_formatting_operation():
+    """Перевод даты в формат ДД.ММ.ГГГГ"""
+    last_operation = data_json()
+    for data_corrected in last_operation:
+        data_corrected["date"] = datetime.datetime.fromisoformat(data_corrected['date']).strftime('%d.%m.%Y')
+    return last_operation
+
+
+def hide_and_split():
     pass
