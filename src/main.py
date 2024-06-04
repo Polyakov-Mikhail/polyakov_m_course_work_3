@@ -2,7 +2,7 @@ from functions import data_json, date_formatting_operation, hide_and_split
 
 
 def main():
-    last_five_operations = data_json()
+    last_five_operations = data_json("../operations.json")
     for operation in last_five_operations:
         # print(operation)
         print(f"{date_formatting_operation(operation['date'])} {operation['description']}")

@@ -1,13 +1,15 @@
 import json
 import datetime
+import os
 
 
-def data_json():
-    """Функция получает последние N операций из файла json"""
+def data_json(user_data_json):
+    """Функция получает последние 5 операций из файла json"""
 
     executed_states = []
+    path_operations = os.path.abspath(user_data_json)
 
-    with open("../operations.json", encoding='utf-8') as file:
+    with open(path_operations, encoding='utf-8') as file:
         data = json.loads(file.read())
 
     for executed in data:
